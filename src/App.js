@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
-import logo from './logo.svg';
->>>>>>> 3d54b8638bd9d76853fd75f2ac41f42e4296f791
 import './App.css';
 import TOC from './components/TOC';
 import Subject from './components/Subject';
@@ -10,7 +6,6 @@ import ReadContent from './components/ReadContent';
 import CreateContent from './components/CreateContent';
 import Control from './components/Control';
 
-<<<<<<< HEAD
 // 메인 컴포넌트, 컴포넌트를 선언하는 코드(JSX, JS와 유사하지만 다름)
 class App extends Component {
   constructor(props){
@@ -86,14 +81,6 @@ class App extends Component {
             })
           }.bind(this)}></Control>
           {_article}
-=======
-class App extends Component {
-    render () {
-      return (
-      <div className="App">
-        
-          Learn React!
->>>>>>> 3d54b8638bd9d76853fd75f2ac41f42e4296f791
       </div>
     );
   }
