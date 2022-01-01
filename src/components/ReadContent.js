@@ -6,7 +6,7 @@ class ReadContent extends Component {
       return(
         <article>
               <h2>{this.props.title}</h2>
-              {this.props.ccc}
+              {this.props.desc}
         </article>
       );
       }
