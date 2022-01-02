@@ -4,7 +4,7 @@ import TOC from './components/TOC';
 import Subject from './components/Subject';
 import ReadContent from './components/ReadContent';
 import CreateContent from './components/CreateContent';
-import UppdateContent from './components/UppdateContent';
+import UpdateContent from './components/UpdateContent';
 import Control from './components/Control';
 
 // 메인 컴포넌트, 컴포넌트를 선언하는 코드(JSX, JS와 유사하지만 다름)
@@ -61,7 +61,7 @@ class App extends Component {
     }
     else if(this.state.mode === 'update'){
       _content = this.getReadContent();
-      _article = <UppdateContent data ={_content} onSubmit={function(_id, _title, _desc){
+      _article = <UpdateContent data ={_content} onSubmit={function(_id, _title, _desc){
         var _contents = Array.from(this.state.contents);
         var i = 0;
         while(i < _contents.length){
@@ -75,7 +75,7 @@ class App extends Component {
           contents:_contents,
           mode:'read'
         });
-      }.bind(this)}></UppdateContent>
+      }.bind(this)}></UpdateContent>
     }
     return _article;
   }
