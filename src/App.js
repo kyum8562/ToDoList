@@ -6,23 +6,27 @@ import ReadContent from './components/ReadContent';
 import CreateContent from './components/CreateContent';
 import UpdateContent from './components/UpdateContent';
 import Control from './components/Control';
+import Test from './components/Test';
+
 
 // 메인 컴포넌트, 컴포넌트를 선언하는 코드(JSX, JS와 유사하지만 다름)
 class App extends Component {
   constructor(props){
     super(props);
-    this.max_content_id = 3;
+    this.max_content_id = 4;
     this.state = {
+      test : 'test',
       mode:'welcome',
       selected_content_id:2,
       welcome:{title:'welcome', desc:'hello React!'},
       a:{
-        title:'WEB', 
-        sub:'World Wide Web!!!!'},
+        title:'TO DO LIST', 
+        sub:`Please write down what to do today.\nTitle is 'simple' Desc is 'specific'`},
       contents:[
-        {id:1, title:'HTML', desc:'HTML is for information'},
-        {id:2, title:'CSS', desc:'CSS is for design'},
-        {id:3, title:'JS', desc:'JS is for interactive'}
+        {id:1, title:'Exercise', desc:'30 push-up, 30 sit-up repeat 3 times!'},
+        {id:2, title:'Toy project', desc:'3 hours coding for toy project that I am working on right now!'},
+        {id:3, title:'Algorithm', desc:'3 question resolving for algorithm!'},
+        {id:4, title:'Stick to Studying time', desc:'Studying for at least 10 hours!'}
       ]
     }
   }
@@ -128,6 +132,11 @@ class App extends Component {
           }
         }.bind(this)}></Control>
         {this.getContent()}
+
+        <Test
+           test = {this.state.test}
+        >
+        </Test>
       </div>
     );
   }

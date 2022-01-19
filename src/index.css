@@ -12,7 +12,33 @@ code {
     monospace;
 } */
 
+article {
+  text-align: center;
+}
+header {
+  text-align: center;
+}
 body {
-  background-color: powderblue;
-  color: blue;
+  background-color: #34495e;
+  color: #ecf0f1;
+  white-space: pre-wrap;
+}
+ul {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  /* text-align: center; */
+}
+
+a {
+  color: #ecf0f1;
+}
+h3 {
+  text-align: center;
+  color: yellow;
+}
+
+input {
+  background-color: #34495e;
+  color: #ecf0f1;
 }

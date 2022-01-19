@@ -7,7 +7,7 @@ class Subject extends Component {
         <header>
           <title>test React</title>
           <h1><a href="/" onClick={function(e){
-            e.preventDefault();
+            // e.preventDefault();
             this.props.onChangePage();
             console.log(' ');
           }.bind(this)}>{this.props.title}

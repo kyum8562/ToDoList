@@ -4,7 +4,7 @@ import '../App.css';
 class TOC extends Component {
   shouldComponentUpdate(newProps, newState){
     // 파라미터는 newProps와 newState 이다.
-    // 데이터를 Create 할 때 push가 아닌 concat을 사용해서 데이 두 파라미터의
+    // 데이터를 Create 할 때 push가 아닌 concat을 사용해서 데이터 두 파라미터의
     // 차이를 이용해서 render() 호출 여부를 결정한다.
     console.log(`shouldComponentUpdate`);
     if(this.props.data === newProps.data){
