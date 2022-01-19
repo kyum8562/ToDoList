@@ -13,15 +13,21 @@ import Test from './components/Test';
 class App extends Component {
   constructor(props){
     super(props);
+    // 초기값 설정
     this.max_content_id = 4;
     this.state = {
       test : 'test',
+
       mode:'welcome',
       selected_content_id:2,
-      welcome:{title:'welcome', desc:'hello React!'},
-      a:{
+      // title과 subtitle 
+      main:{
         title:'TO DO LIST', 
         sub:`Please write down what to do today.\nTitle is 'simple' Desc is 'specific'`},
+
+      // mode : welcome일때
+      welcome:{title:'welcome', desc:'hello React!'},
+      // 기본 목록
       contents:[
         {id:1, title:'Exercise', desc:'30 push-up, 30 sit-up repeat 3 times!'},
         {id:2, title:'Toy project', desc:'3 hours coding for toy project that I am working on right now!'},
@@ -30,6 +36,8 @@ class App extends Component {
       ]
     }
   }
+  // 현재 contents를 읽는다.
+  // (contents의 length 만큼 반복하여,) 현재 id가 contents의 id와 일치할 경우 해당 id의 content를 리턴한다.
   getReadContent(){
     var i = 0;
     while(i < this.state.contents.length){
@@ -41,17 +49,22 @@ class App extends Component {
       i = i + 1;
     }
   }
+
+  // mode(welcome, read, create, update, delete)에 따른 기능 구현
   getContent(){
     var _title, _desc, _article = null;
+    // mode : welcome
     if(this.state.mode === 'welcome'){
       _title = this.state.welcome.title; 
       _desc = this.state.welcome.desc; 
       _article = <ReadContent title ={_title} desc={_desc}></ReadContent>
     }
+    // mode : read
     else if(this.state.mode ==='read'){
       var _content = this.getReadContent();
       _article = <ReadContent title ={_content.title} desc={_content.desc}></ReadContent>
     }
+    // mode : create
     else if(this.state.mode === 'create'){
       _article = <CreateContent onSubmit={function(_title, _desc){
         this.max_content_id += 1;
@@ -63,6 +76,7 @@ class App extends Component {
         });
       }.bind(this)}></CreateContent>
     }
+    // mode : update
     else if(this.state.mode === 'update'){
       _content = this.getReadContent();
       _article = <UpdateContent data ={_content} onSubmit={function(_id, _title, _desc){
@@ -87,17 +101,17 @@ class App extends Component {
   render () {
     return (
     <div className="App">
-
+        {/* subject 컴포넌트 실행 */}
         <Subject 
-          title={this.state.a.title}
-          sub={this.state.a.sub}
+          title={this.state.main.title}
+          sub={this.state.main.sub}
           onChangePage = {function(){
             this.setState({mode: 'welcome'});
           }.bind(this)}
         >
         </Subject>
 
-        {/* <Subject title="React" sub="wide!"></Subject> */}
+        {/* TOC 컴포넌트 실행 */}
         <TOC data = {this.state.contents}
           onChangePage = {function(id){
             this.setState({
@@ -106,7 +120,11 @@ class App extends Component {
           }.bind(this)}
         >
         </TOC>
+        
+        {/* Control 컴포넌트 실행 */}
         <Control onChangeMode={function(_mode) {
+          
+          {/* mode : delete */}
           if(_mode === 'delete'){
             if(window.confirm('really??')){
               var _contents = Array.from(this.state.contents);
@@ -125,6 +143,8 @@ class App extends Component {
               alert('deleted!');
             }
           }
+
+          // mode : delete 이외의 모드
           else{
             this.setState({
               mode: _mode
@@ -133,8 +153,14 @@ class App extends Component {
         }.bind(this)}></Control>
         {this.getContent()}
 
-        <Test
+        {/* Test 컴포넌트 실행 */}
+        <Test 
            test = {this.state.test}
+           onChangePage = {function() {
+              this.setState ({
+                mode : 'welcome'
+              });
+           }.bind(this)}
         >
         </Test>
       </div>

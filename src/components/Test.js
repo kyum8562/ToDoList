@@ -5,7 +5,12 @@ class Test extends Component {
     render () {
         return(
             <h3>
-                {this.props.test}
+                <a href ="/test"
+                onClick = {function(e){
+                      e.preventDefault();
+                      this.props.onChangePage();
+                    }.bind(this)}>{this.props.test}
+                </a>
             </h3>
         );
     }
