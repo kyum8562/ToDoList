@@ -10,7 +10,7 @@ class TOC extends Component {
     if(this.props.data === newProps.data){
     console.log(`this.props.data === newProps.data`);
 
-      // 새로운 데이터가 들어오지 않는단면 render() 호출 X
+      // 새로운 데이터가 들어오지 않는단면 render() 호출  X
       return false;
     }
     // 새로운 데이터가 들어오게 된다면 render() 호출
